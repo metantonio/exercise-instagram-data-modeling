@@ -20,7 +20,7 @@ class User(Base):
     password = Column(String(250), nullable=False)
     comments = Column(String(250), nullable=False)
     comments_like = Column(String(250), nullable=False)
-    post_like = Column(String(250), nullable=False)
+    post_like = Column(Integer, nullable=False)
     posts = relationship("Post", backref="user")
 
 class Post(Base):

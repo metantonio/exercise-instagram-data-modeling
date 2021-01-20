@@ -1,0 +1,50 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+User
+-
+id PK int
+email unique string
+username unique string
+first_name string
+last_name string
+password string
+post Post
+comments Comments
+comments_likes CommentLike
+post_likes PostLike
+
+Post
+-
+id PK int
+user_id FK >- User.id
+user User
+date_published datetime
+latitude string NULL
+longitude string NULL
+tags string
+likes int
+content string NULL
+comments comment
+
+Comment
+-
+id PK int
+content string
+post_id int FK >- Post.id
+author_id in FK >- User.id
+datetime datetime
+comment_likes int
+post post
+
+Like
+-
+id PK int
+post_id int FK >- Post.id
+user_id int FK >- User.id
+
+CommentsLike
+-
+id PK int
+comment_id int FK >- Comment.comment_likes
